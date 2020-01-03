@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unit-testing-deployment
+  labels:
+    app: unit-testing
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: unit-testing
+  template:
+    metadata:
+      labels:
+        app: unit-testing
+    spec:
+      containers:
+      - name: gcc-googletest-sonarqube
+        image: oytoyt/gcc-googletest-sonarqube:latest
+        ports:
+        - containerPort: 80
